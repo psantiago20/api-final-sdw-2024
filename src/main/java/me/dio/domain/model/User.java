@@ -2,6 +2,7 @@ package me.dio.domain.model;
 
 import jakarta.persistence.*;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Entity(name = "tb_user")
@@ -25,6 +26,9 @@ public class User {
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<News> news;
+
+    @Column(nullable = false, precision = 13, scale = 2)
+    private BigDecimal balance;
 
     public Long getId() {
         return id;
@@ -72,5 +76,13 @@ public class User {
 
     public void setNews(List<News> news) {
         this.news = news;
+    }
+
+    public BigDecimal getBalance() {
+        return balance;
+    }
+
+    public void setBalance(BigDecimal balance) {
+        this.balance = balance;
     }
 }

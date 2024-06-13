@@ -16,8 +16,8 @@ public class Account {
 
     private String agency;
 
-    @Column(nullable = false, precision = 13, scale = 2)
-    private BigDecimal balance;
+//    @Column(nullable = false, precision = 13, scale = 2)
+//    private BigDecimal balance;
 
     @Column(name = "additional_limit", nullable = false, precision = 13, scale = 2)
     private BigDecimal limit;
@@ -46,13 +46,13 @@ public class Account {
         this.agency = agency;
     }
 
-    public BigDecimal getBalance() {
-        return balance;
-    }
-
-    public void setBalance(BigDecimal balance) {
-        this.balance = balance;
-    }
+//    public BigDecimal getBalance() {
+//        return balance;
+//    }
+//
+//    public void setBalance(BigDecimal balance) {
+//        this.balance = balance;
+//    }
 
     public BigDecimal getLimit() {
         return limit;

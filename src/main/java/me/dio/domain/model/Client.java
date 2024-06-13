@@ -15,11 +15,13 @@ public class Client {
     @Column(length = 14)
     private String phone;
 
-    @Column(length = 11)
+    @Column(unique = true, length = 11)
     private String cpf;
 
     @Column(length = 8)
     private String zip_code;
+
+    private String city;
 
     private String country;
 
@@ -61,6 +63,14 @@ public class Client {
 
     public void setZip_code(String zip_code) {
         this.zip_code = zip_code;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
     }
 
     public String getCountry() {
