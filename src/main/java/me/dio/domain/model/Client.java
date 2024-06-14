@@ -15,8 +15,8 @@ public class Client {
     @Column(length = 14)
     private String phone;
 
-    @Column(unique = true, length = 14)
-    private String cpf;
+    @Column(unique = true, length = 18)
+    private String document;
 
     @Column(length = 8)
     private String zip_code;
@@ -49,12 +49,12 @@ public class Client {
         this.phone = phone;
     }
 
-    public String getCpf() {
-        return cpf;
+    public String getDocument() {
+        return document;
     }
 
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
+    public void setDocument(String document) {
+        this.document = document;
     }
 
     public String getZip_code() {

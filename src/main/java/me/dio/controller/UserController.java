@@ -35,14 +35,14 @@ public class UserController {
                 .buildAndExpand(userCreated.getId())
                 .toUri();
         if(userToCreate.getUserType() == UserType.NATURAL){
-            if(!ValidaCPF.isCPF(userToCreate.getClient().getCpf())){
+            if(!ValidaCPF.isCPF(userToCreate.getClient().getDocument())){
                 throw new Exception("CPF inválido!");
             }
             return ResponseEntity.created(location).body(userCreated);
         }
 
         if(userToCreate.getUserType() == UserType.LEGAL){
-            if(!ValidaCNPJ.isCNPJ(userToCreate.getClient().getCpf())){
+            if(!ValidaCNPJ.isCNPJ(userToCreate.getClient().getDocument())){
                 throw new Exception("CNPJ inválido!");
             }
             return ResponseEntity.created(location).body(userCreated);
