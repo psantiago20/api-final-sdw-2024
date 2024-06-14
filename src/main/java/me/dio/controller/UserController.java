@@ -1,6 +1,8 @@
 package me.dio.controller;
 
 
+import me.dio.controller.exception.CNPJInvalidoException;
+import me.dio.controller.exception.CPFInvalidoException;
 import me.dio.domain.model.User;
 import me.dio.domain.model.UserType;
 import me.dio.domain.model.ValidaCNPJ;
@@ -36,14 +38,14 @@ public class UserController {
                 .toUri();
         if(userToCreate.getUserType() == UserType.NATURAL){
             if(!ValidaCPF.isCPF(userToCreate.getClient().getDocument())){
-                throw new Exception("CPF inválido!");
+                throw new CPFInvalidoException();
             }
             return ResponseEntity.created(location).body(userCreated);
         }
 
         if(userToCreate.getUserType() == UserType.LEGAL){
             if(!ValidaCNPJ.isCNPJ(userToCreate.getClient().getDocument())){
-                throw new Exception("CNPJ inválido!");
+                throw new CNPJInvalidoException();
             }
             return ResponseEntity.created(location).body(userCreated);
         }
