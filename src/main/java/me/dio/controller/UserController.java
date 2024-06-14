@@ -2,6 +2,8 @@ package me.dio.controller;
 
 
 import me.dio.domain.model.User;
+import me.dio.domain.model.UserType;
+import me.dio.domain.model.ValidaCNPJ;
 import me.dio.domain.model.ValidaCPF;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -32,9 +34,19 @@ public class UserController {
                 .path("/{id}")
                 .buildAndExpand(userCreated.getId())
                 .toUri();
-        if(!ValidaCPF.isCPF(userToCreate.getClient().getCpf())){
-            throw new Exception("CPF inválido!");
+        if(userToCreate.getUserType() == UserType.NATURAL){
+            if(!ValidaCPF.isCPF(userToCreate.getClient().getCpf())){
+                throw new Exception("CPF inválido!");
+            }
+            return ResponseEntity.created(location).body(userCreated);
         }
-        return ResponseEntity.created(location).body(userCreated);
+
+        if(userToCreate.getUserType() == UserType.LEGAL){
+            if(!ValidaCNPJ.isCNPJ(userToCreate.getClient().getCpf())){
+                throw new Exception("CNPJ inválido!");
+            }
+            return ResponseEntity.created(location).body(userCreated);
+        }
+        return null;
     }
 }

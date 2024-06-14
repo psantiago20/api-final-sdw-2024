@@ -30,7 +30,7 @@ public class User {
     @Column(nullable = false, precision = 13, scale = 2)
     private BigDecimal balance;
 
-//    private String cpf;
+    private UserType userType;
 
     public Long getId() {
         return id;
@@ -88,11 +88,11 @@ public class User {
         this.balance = balance;
     }
 
-//    public String getCpf() {
-//        return cpf;
-//    }
-//
-//    public void setCpf(String cpf) {
-//        this.cpf = cpf;
-//    }
+    public UserType getUserType() {
+        return userType;
+    }
+
+    public void setUserType(UserType userType) {
+        this.userType = userType;
+    }
 }

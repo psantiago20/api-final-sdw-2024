@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.InputMismatchException;
 
+// https://www.devmedia.com.br/validando-o-cpf-em-uma-aplicacao-java/22097
 public class ValidaCPF {
 
     @Autowired

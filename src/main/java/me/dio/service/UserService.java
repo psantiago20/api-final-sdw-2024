@@ -1,8 +1,6 @@
 package me.dio.service;
 
-import me.dio.domain.model.Client;
 import me.dio.domain.model.User;
-import me.dio.domain.model.ValidaCPF;
 import me.dio.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;

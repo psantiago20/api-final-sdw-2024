@@ -15,7 +15,7 @@ public class Client {
     @Column(length = 14)
     private String phone;
 
-    @Column(unique = true, length = 11)
+    @Column(unique = true, length = 14)
     private String cpf;
 
     @Column(length = 8)
