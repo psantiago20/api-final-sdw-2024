@@ -1,6 +1,8 @@
 package me.dio.service;
 
+import me.dio.domain.model.Client;
 import me.dio.domain.model.User;
+import me.dio.domain.model.ValidaCPF;
 import me.dio.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
@@ -182,7 +184,7 @@ public interface UserService {
     }
 
     default boolean validateUser(User payer, BigDecimal amount) throws Exception {
-        if(payer.getBalance().compareTo(amount) < 0){
+        if(payer.getBalance().add(payer.getAccount().getLimit()).compareTo(amount) < 0){
             throw new Exception("Saldo insuficiente.");
         }
 

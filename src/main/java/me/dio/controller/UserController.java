@@ -2,6 +2,7 @@ package me.dio.controller;
 
 
 import me.dio.domain.model.User;
+import me.dio.domain.model.ValidaCPF;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -25,12 +26,15 @@ public class UserController {
     }
 
     @PostMapping
-    public ResponseEntity<User> create(@RequestBody User userToCreate){
+    public ResponseEntity<User> create(@RequestBody User userToCreate) throws Exception {
         var userCreated = userService.create(userToCreate);
         URI location = ServletUriComponentsBuilder.fromCurrentRequest()
                 .path("/{id}")
                 .buildAndExpand(userCreated.getId())
                 .toUri();
+        if(!ValidaCPF.isCPF(userToCreate.getClient().getCpf())){
+            throw new Exception("CPF inválido!");
+        }
         return ResponseEntity.created(location).body(userCreated);
     }
 }

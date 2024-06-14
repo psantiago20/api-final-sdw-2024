@@ -30,6 +30,8 @@ public class User {
     @Column(nullable = false, precision = 13, scale = 2)
     private BigDecimal balance;
 
+//    private String cpf;
+
     public Long getId() {
         return id;
     }
@@ -85,4 +87,12 @@ public class User {
     public void setBalance(BigDecimal balance) {
         this.balance = balance;
     }
+
+//    public String getCpf() {
+//        return cpf;
+//    }
+//
+//    public void setCpf(String cpf) {
+//        this.cpf = cpf;
+//    }
 }
